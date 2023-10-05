@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla de Datos Ficticios</title>
+</head>
+<body>
+    <h1>Tabla de Datos Ficticios</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Correo Electrónico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>30</td>
+                <td>john@example.com</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>25</td>
+                <td>jane@example.com</td>
+            </tr>
+            <tr>
+                <td>Bob Johnson</td>
+                <td>40</td>
+                <td>bob@example.com</td>
+            </tr>
+            <tr>
+                <td>Alice Brown</td>
+                <td>35</td>
+                <td>alice@example.com</td>
+            </tr>
+            <tr>
+                <td>Michael Wilson</td>
+                <td>28</td>
+                <td>michael@example.com</td>
+            </tr>
+            <tr>
+                <td>Lisa Davis</td>
+                <td>32</td>
+                <td>lisa@example.com</td>
+            </tr>
+            <tr>
+                <td>David Lee</td>
+                <td>27</td>
+                <td>david@example.com</td>
+            </tr>
+            <tr>
+                <td>Sarah White</td>
+                <td>29</td>
+                <td>sarah@example.com</td>
+            </tr>
+            <tr>
+                <td>Kevin Miller</td>
+                <td>45</td>
+                <td>kevin@example.com</td>
+            </tr>
+            <tr>
+                <td>Emily Anderson</td>
+                <td>22</td>
+                <td>emily@example.com</td>
+            </tr>
+            <tr>
+                <td>Thomas Clark</td>
+                <td>38</td>
+                <td>thomas@example.com</td>
+            </tr>
+            <tr>
+                <td>Mary Turner</td>
+                <td>31</td>
+                <td>mary@example.com</td>
+            </tr>
+            <tr>
+                <td>James Harris</td>
+                <td>34</td>
+                <td>james@example.com</td>
+            </tr>
+            <tr>
+                <td>Susan Martin</td>
+                <td>42</td>
+                <td>susan@example.com</td>
+            </tr>
+            <tr>
+                <td>Ryan Adams</td>
+                <td>26</td>
+                <td>ryan@example.com</td>
+            </tr>
+            <tr>
+                <td>Olivia Parker</td>
+                <td>24</td>
+                <td>olivia@example.com</td>
+            </tr>
+            <tr>
+                <td>William Brown</td>
+                <td>33</td>
+                <td>william@example.com</td>
+            </tr>
+            <tr>
+                <td>Grace Hall</td>
+                <td>27</td>
+                <td>grace@example.com</td>
+            </tr>
+            <tr>
+                <td>Henry Taylor</td>
+                <td>39</td>
+                <td>henry@example.com</td>
+            </tr>
+            <tr>
+                <td>Natalie Martinez</td>
+                <td>29</td>
+                <td>natalie@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <form method="post" action="{% url 'exportar_a_excel' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Exportar a Excel</button>
+    </form>
+</body>
+</html>
