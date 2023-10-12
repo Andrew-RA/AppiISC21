@@ -1,17 +1,10 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
-from django.shortcuts import render, redirect
-from rest_framework.views import APIView
-
-from django import forms
-from django.shortcuts import render
-from .models import Persona
-from .forms import ExportarDatosForm
-from openpyxl import Workbook
-from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 
 class Login(APIView):
@@ -26,22 +19,47 @@ class RegistraUsuario(APIView):
     def get(self,request):
         # Lógica de la vista
         return render(request,self.template_name)
-    
     def post(self, request):
+        
         # Obtener datos del formulario POST
-        username = request.POST.get('usuario')
-        password = request.POST.get('contraseña')
         first_name = request.POST.get('primerNombre')
         last_name = request.POST.get('segundoNombre')
+        username = request.POST.get('usuario')
         email = request.POST.get('correoElectronico')
-        
-    # Crear un nuevo usuario
+        password = request.POST.get('contraseña')
+        # Crear un nuevo usuario
         usuario = User.objects.create_user(username=username, password=password)
         usuario.first_name = first_name
         usuario.last_name = last_name
         usuario.email = email
         usuario.save()
+        
+        # Enviar un correo electrónico con formato HTML y CSS
+        subject = 'Registro exitoso'
 
+        # Renderizar el contenido HTML desde una plantilla
+        html_content = render_to_string('correo_registro.html', {'username': username, 'first_name': first_name, 'last_name': last_name, 'email': email})
+
+        # Crear una versión de texto sin formato del contenido HTML
+        text_content = strip_tags(html_content)
+
+        # Crear el correo electrónico con contenido HTML y texto sin formato
+        msg = EmailMultiAlternatives(subject, text_content, 'tu_correo@gmail.com', [email])
+        msg.attach_alternative(html_content, "text/html")
+
+        # Enviar el correo electrónico
+        msg.send()
+        
+        
+        
+        return redirect ('RegistraUsuario') 
+    
+# clase para darle la bienvenida a un usuario registrado con exito 
+class RegistroUser(APIView):
+    template_name='correcto.html'
+    def get(self,request):
+        return render(request,self.template_name)
+        
     
 class Home(APIView):
     template_name="index.html"
@@ -52,49 +70,5 @@ class Home(APIView):
     
     
     
-# PRUEBA EXCEL
 
-class ExportarDatosForm(forms.Form):
-    seleccionar_campos = forms.MultipleChoiceField(
-        choices=(
-            ('nombre', 'Nombre'),
-            ('edad', 'Edad'),
-            ('correo', 'Correo Electrónico'),
-        ),
-        widget=forms.CheckboxSelectMultiple
-    )
-
-
-def exportar_a_excel(request):
-    if request.method == 'POST':
-        form = ExportarDatosForm(request.POST)
-        if form.is_valid():
-            # Obtener los campos seleccionados por el usuario
-            campos_seleccionados = form.cleaned_data['seleccionar_campos']
-
-            # Consultar la base de datos para obtener los datos de las personas
-            personas = Persona.objects.all()
-
-            # Crear un libro de Excel y una hoja de cálculo
-            wb = Workbook()
-            ws = wb.active
-
-            # Agregar encabezados de columna al archivo Excel
-            ws.append(campos_seleccionados)
-
-            # Agregar datos al archivo Excel
-            for persona in personas:
-                datos_persona = [getattr(persona, campo) for campo in campos_seleccionados]
-                ws.append(datos_persona)
-
-            # Crear una respuesta HTTP con el archivo Excel adjunto
-            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-            response['Content-Disposition'] = 'attachment; filename=exportacion_datos.xlsx'
-            wb.save(response)
-
-            return response
-    else:
-        form = ExportarDatosForm()
-
-        return render(request, 'datos.html', {'form': form})
 
