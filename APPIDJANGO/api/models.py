@@ -1,13 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+from django.shortcuts import render
+from django.contrib.auth.models import User  # Importa el modelo de usuario predefinido de Django
 
-# NUEVO EXCEL 
-class Persona(models.Model):
-    nombre = models.CharField(max_length=100)
-    edad = models.IntegerField()
-    correo = models.EmailField()
 
-    def _str_(self):
-        return self.nombre
+# CREACIÓN DEL MODELO UserProfile.
+class UserProfile(models.Model):
+   
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
     
 
-# Create your models here.

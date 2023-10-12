@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,6 @@ SECRET_KEY = 'django-insecure-s6=2(bwfv5o-^6j+=#0k#+)dc-08^vnoav)c_m*ice8ch)7cm4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -40,6 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,8 +144,11 @@ EMAIL_HOST = 'smtp.gmail.com'  # Host SMTP de Gmail
 EMAIL_PORT = 587  # Puerto SMTP de Gmail
 EMAIL_USE_TLS = True  # Usar TLS para la conexión segura
 EMAIL_HOST_USER = 'ramgear117@gmail.com'  # Tu dirección de correo electrónico de Gmail
-EMAIL_HOST_PASSWORD = 'vkdi vyxw qyus mlmw'  # La contraseña de tu cuenta de Gmail o una contraseña de aplicación si está habilitada
+EMAIL_HOST_PASSWORD = 'nitz cvlr joja zzsn'  # La contraseña de tu cuenta de Gmail o una contraseña de aplicación si está habilitada
 
 # Configuración opcional para el remitente predeterminado
 DEFAULT_FROM_EMAIL = 'ramgear117@gmail.com'
+
+
+
 

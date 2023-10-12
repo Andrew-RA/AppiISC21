@@ -1,21 +1,6 @@
-"""APPIDJANGO URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 
 from django.urls import path
-from api.views import Login,Home,RegistraUsuario,RegistroUser
+from api.views import Login,Home,RegistraUsuario,RegistroUser, ResetPasswordView,  UserListView, ExportToExcelView
 
 
 urlpatterns = [
@@ -26,6 +11,8 @@ urlpatterns = [
     path('Home',Home.as_view(),name='Home'),
     path('Login',Login.as_view(),name='Login'),
     path('RegistroUser/', RegistroUser.as_view(), name='RegistroUser'),
-
+    path('reset_password/', ResetPasswordView.as_view(), name='reset_password'),
+    path('user-list/', UserListView.as_view(), name='user_list'),
+    path('export_to_excel/', ExportToExcelView.as_view(), name='export_to_excel'),
 ]
 
