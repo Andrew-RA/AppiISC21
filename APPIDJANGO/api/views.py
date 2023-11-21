@@ -17,7 +17,10 @@ from django.contrib.auth.models import User
 from django.views.generic import ListView
 from django.http import HttpResponse
 import xlsxwriter
-
+from django.shortcuts import render
+from paypal.standard.forms import PayPalPaymentsForm
+from django.conf import settings
+import uuid
 
 
 class Login(APIView):
@@ -146,3 +149,31 @@ class ExportToExcelView(View):
         # Cierra el libro de trabajo y devuelve la respuesta HTTP
         workbook.close()
         return response
+    
+    
+    
+    #API METODO PAYPAL 
+
+
+class PaypalCheckOut(View): 
+    def get(self, request):
+        host = request.get_host()
+
+        paypal_checkout = {
+            'business': settings.PAYPAL_RECEIVER_EMAIL,
+            'amount': '1',
+            'item_name': 'Feria de atracciones Aventuras sin fin',
+            'invoice': str(uuid.uuid4()),  # Genera un ID de factura único
+            'currency_code': 'MXN',
+            'return_url': f"http://{host}/payment/",
+            'cancel_url': f"http://{host}/cancel/"
+        }
+
+        paypal_payment = PayPalPaymentsForm(initial=paypal_checkout)
+
+        context = {
+            'product': '1',
+            'paypal': paypal_payment
+        }
+
+        return render(request, 'payment.html', context)

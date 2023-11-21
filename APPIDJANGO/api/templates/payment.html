@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Feria de Atracciones</title>
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #ffe6ca; /* Fondo de color pastel */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #d9534f;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .products {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        button {
+            background-color: #5bc0de;
+            color: #fff;
+            padding: 15px 30px;
+            border: 2px solid #428bca;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #46b8da;
+        }
+
+        /* Estilo para el ícono */
+        #icon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px; /* Tamaño aumentado */
+            height: 100px; /* Tamaño aumentado */
+            background-color: #d9534f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Sombreado más pronunciado */
+        }
+
+        #icon img {
+            width: 70%; /* Tamaño del contenido del ícono */
+            height: 70%; /* Tamaño del contenido del ícono */
+            object-fit: contain;
+        }
+    </style>
+
+    <!-- Enlaces a fuentes y estilos externos -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+
+</head>
+
+<body>
+
+    <!-- Ícono de la feria de atracciones -->
+    <div id="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-paypal" viewBox="0 0 16 16">
+            <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.351.351 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91.379-.27.712-.603.993-1.005a4.942 4.942 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.687 2.687 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.695.695 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016c.217.124.4.27.548.438.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.873.873 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.352.352 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32.845-5.214Z"/>
+        </svg>
+    </div>
+
+    <h1>Bienvenido a la interfaz de pago de la Feria Aventuras sin fin</h1>
+
+    <div class="heading_container">
+        <h1>Verifica tus servicios: {{product.name}}</h1>
+        <div class="products">
+            <img class="img" src="{{product.image}}" alt="">
+            <p>Transacción de pagos</p>
+            <p>Precio: $ 1 MXN</p>
+            <p>Descripción: Reservación de atracciones</p>
+            <!-- <button>Purchase</button> -->
+            <p>
+            </p>
+            {{paypal.render}}
+        </div>
+    </div>
+
+    {% include "js.html" %}
+
+</body>
+
+</html>

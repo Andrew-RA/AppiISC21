@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s6=2(bwfv5o-^6j+=#0k#+)dc-08^vnoav)c_m*ice8ch)7cm4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'APPIDJANGO.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Feria',
+        'USER': 'postgres',
+        'PASSWORD': 'Spiderman',
+        'HOST': 'localhost',  # Puede ser diferente en tu configuración
+        'PORT': '5432',           # Deja esto en blanco para usar el puerto predeterminado
     }
 }
 
@@ -148,6 +152,15 @@ EMAIL_HOST_PASSWORD = 'nitz cvlr joja zzsn'  # La contraseña de tu cuenta de Gm
 
 # Configuración opcional para el remitente predeterminado
 DEFAULT_FROM_EMAIL = 'ramgear117@gmail.com'
+
+# modo live........................................................................................0
+# PAYPAL_RECEIVER_EMAIL = 'guadalupedenisseperez@gmail.com'
+# PAYPAL_TEST = False 
+
+
+# # modo SANDBOX
+PAYPAL_RECEIVER_EMAIL = 'sb-a4hkm15190403@business.example.com'
+PAYPAL_TEST = True
 
 
 
