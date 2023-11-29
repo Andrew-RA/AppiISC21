@@ -177,3 +177,26 @@ class PaypalCheckOut(View):
         }
 
         return render(request, 'payment.html', context)
+    
+    
+    #Api PowerBi
+    
+    class informe(APIView):
+        template_name='powerbi.html'
+        def get(self,request):
+            return render(request,self.template_name)
+        
+# abrir power bi 
+class powerbi(APIView):
+    template_name="powerbi.html"
+    def get(self,request):
+        # Lógica de la vista
+        return render(request,self.template_name)
+    
+    
+# Fullcalendar
+class CalendarView(APIView):
+    template_name="calendar.html"
+    def get(self,request):
+        # Lógica de la vista
+        return render(request,self.template_name)

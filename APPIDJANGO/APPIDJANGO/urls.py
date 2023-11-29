@@ -1,6 +1,7 @@
 
 from django.urls import path
-from api.views import Login,Home,RegistraUsuario,RegistroUser, ResetPasswordView,  UserListView, ExportToExcelView, PaypalCheckOut
+from api.views import Login,Home,RegistraUsuario,RegistroUser, ResetPasswordView,  UserListView, ExportToExcelView, PaypalCheckOut, powerbi, CalendarView
+
 
 
 urlpatterns = [
@@ -15,8 +16,10 @@ urlpatterns = [
     path('user-list/', UserListView.as_view(), name='user_list'),
     path('export_to_excel/', ExportToExcelView.as_view(), name='export_to_excel'),
     path('payment/',PaypalCheckOut.as_view(), name='payment'),
-    # path('success/',success.as_view(), name='success'),
-    # path('cancel/',cancel.as_view(), name='cancel'),
+    path('powerbi/',powerbi.as_view(), name='powerbi'),
+    path('calendar/', CalendarView.as_view(), name='calendar'),
+    
+    
     
 ]
 
