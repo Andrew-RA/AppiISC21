@@ -3,8 +3,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.shortcuts import render
 from django.contrib.auth.models import User  # Importa el modelo de usuario predefinido de Django
-
-
+from django.db import models
+from django.contrib.auth.models import User
 
 # CREACIÓN DEL MODELO UserProfile.
 class UserProfile(models.Model):
@@ -54,20 +54,7 @@ class Evento(models.Model):
 
     def __str__(self):
         return self.nombre
-
-# feria/models.py
-
-from django.db import models
-
-class Pago(models.Model):
-    venta = models.OneToOneField('Venta', on_delete=models.CASCADE)
-    monto = models.DecimalField(max_digits=8, decimal_places=2)
-    metodo = models.CharField(max_length=50)  # Ejemplo: Tarjeta de crédito, efectivo, etc.
-    fecha_pago = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f'Pago de {self.venta.cotizacion.cliente.user.username} - {self.fecha_pago}'
-
+    
     
     
 
