@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Feria de Atracciones</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -43,12 +43,13 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image" style="background-image: url('{% static "img/mam.jpg" %}'); background-size: cover; background-repeat: no-repeat; background-position: center 35%;"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h2 text-gray-900 mb-4"><strong>Bienvenido a la Feria Aventuras Sin Fin</strong></h1>
                                     </div>
+                                                                     
                                     <form class="user" novalidate method="POST" action="{% url 'Login' %}">
                                         {% csrf_token %}
                                         <div class="form-group">
@@ -81,21 +82,16 @@
 
                                            
                                         </a>
-                                        {% comment %} <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a> {% endcomment %}
+
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a href="{% url 'reset_password' %}">RecuperarContraseña</a>
+                                        <a href="{% url 'reset_password' %}"><strong>Recuperar contraseña</strong></a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="{% url 'RegistraUsuario' %}">Create an Account!</a>
+                                        <a class="small" href="{% url 'RegistraUsuario' %}"><strong>Crear una cuenta nueva</strong></a>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>

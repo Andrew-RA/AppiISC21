@@ -1,7 +1,6 @@
 
 from django.urls import path
-from api.views import Login,Home,RegistraUsuario,RegistroUser, ResetPasswordView,  UserListView, ExportToExcelView, PaypalCheckOut, powerbi, CalendarView
-
+from api.views import Login,Home,RegistraUsuario,RegistroUser, ResetPasswordView,  UserListView, ExportToExcelView, PaypalCheckOut, powerbi, CalendarView, RegistroUser
 
 
 urlpatterns = [
@@ -18,7 +17,7 @@ urlpatterns = [
     path('payment/',PaypalCheckOut.as_view(), name='payment'),
     path('powerbi/',powerbi.as_view(), name='powerbi'),
     path('calendar/', CalendarView.as_view(), name='calendar'),
-    
+    path('correcto/', RegistroUser.as_view(), name='correcto'),
     
     
 ]

@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Feria de atracciones</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -31,12 +31,12 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image" style="background-image: url('{% static "img/marvel.jpg" %}')"></div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Crear una cuenta</h1>
-                            </div>
+                                <h1 class="h4 text-gray-900 mb-4" style="font-weight: bold; font-size: xx-large;">Crear una cuenta</h1>
+                            </div>                            
                             <form class="user" method="post" action ="{% url 'RegistraUsuario' %}">
                                 
                                 {% csrf_token %}
@@ -77,11 +77,11 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="">Forgot Password?</a>
+                                <a class="small" href="" style="font-weight: bold; font-size: small;">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="{% url 'Login' %}">Already have an account? Login!</a>
-                            </div>
+                                <a class="small" href="{% url 'Login' %}" style="font-weight: bold; font-size: small;">Already have an account? Login!</a>
+                            </div>                                                  
                         </div>
                     </div>
                 </div>

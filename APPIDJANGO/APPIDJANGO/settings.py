@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'axes',
 ]
 
 MESSAGE_TAGS = {
@@ -52,6 +53,12 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
+AUTHENTICATION_BACKENDS = [
+    
+    'axes.backends.AxesStandaloneBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,6 +67,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
+    'APPIDJANGO.middleware.SessionTimeoutMiddleware',
+
 ]
 
 ROOT_URLCONF = 'APPIDJANGO.urls'
@@ -169,6 +179,13 @@ DEFAULT_FROM_EMAIL = 'ramgear117@gmail.com'
 # # modo SANDBOX
 PAYPAL_RECEIVER_EMAIL = 'sb-a4hkm15190403@business.example.com'
 PAYPAL_TEST = True
+
+#Inactividad
+SESSION_COOKIE_AGE = 30
+SESSION_SAVE_EVERY_REQUEST = True
+
+
+
 
 
 
