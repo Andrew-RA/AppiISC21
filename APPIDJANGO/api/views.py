@@ -8,12 +8,10 @@ from django.views import View
 from django.shortcuts import redirect
 import random
 import string
-from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.http import HttpResponse
 import random
 import string
-from django.contrib.auth.models import User
 from django.views.generic import ListView
 from django.http import HttpResponse
 import xlsxwriter
@@ -21,6 +19,10 @@ from django.shortcuts import render
 from paypal.standard.forms import PayPalPaymentsForm
 from django.conf import settings
 import uuid
+from django.shortcuts import render
+from django.views import View
+
+
 
 
 class Login(APIView):
@@ -196,7 +198,9 @@ class powerbi(APIView):
     
 # Fullcalendar
 class CalendarView(APIView):
-    template_name="calendar.html"
+    template_name="calendario.html"
     def get(self,request):
         # Lógica de la vista
         return render(request,self.template_name)
+    
+    

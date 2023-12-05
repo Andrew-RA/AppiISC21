@@ -6,6 +6,7 @@ from django.contrib.auth.models import User  # Importa el modelo de usuario pred
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # CREACIÓN DEL MODELO UserProfile.
 class UserProfile(models.Model):
    
@@ -46,11 +47,19 @@ class Venta(models.Model):
     def __str__(self):
         return f'Venta de {self.cotizacion.cliente.user.username} - {self.fecha_venta}'
 
+# modelo de eventos 
 class Evento(models.Model):
+    TIPOS_ESTADO = (
+        ('realizado', 'Realizado'),
+        ('pendiente', 'Pendiente'),
+        ('no_realizado', 'No Realizado'),
+    )
+
     nombre = models.CharField(max_length=100)
-    fecha_inicio = models.DateTimeField()
-    fecha_fin = models.DateTimeField()
-    atracciones = models.ManyToManyField(Atraccion)
+    # cliente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='eventos_cliente')
+    fecha = models.DateField()
+    hora = models.TimeField()
+    estado = models.CharField(max_length=20, choices=TIPOS_ESTADO)
 
     def __str__(self):
         return self.nombre
